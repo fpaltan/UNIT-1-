@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unidad 1 · Nice to Meet You · English Level 1</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<style>
+:root{--blue:#1769aa;--orange:#f39a2b;--purple:#7b3fa0;--bg:#f5f7fb;--card:#fff;--ink:#1d2433;--muted:#667085;--ok:#2e7d32;--bad:#c62828}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+header{background:linear-gradient(90deg,var(--orange),#ffb75e);color:#fff;padding:18px 20px}
+header h1{margin:0;font-size:1.4rem}
+header p{margin:4px 0 0;opacity:.95}
+nav{display:flex;flex-wrap:wrap;gap:6px;background:#fff;padding:10px 14px;position:sticky;top:0;z-index:5;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+nav a{padding:8px 14px;border-radius:999px;text-decoration:none;color:var(--blue);font-weight:600;font-size:.95rem}
+nav a.active{background:var(--blue);color:#fff}
+main{max-width:900px;margin:0 auto;padding:18px}
+.view{display:none}
+.view.active{display:block}
+.card{background:var(--card);border-radius:14px;padding:18px 20px;margin:0 0 16px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+h2{color:var(--blue);margin:.2em 0 .6em}
+h3{color:var(--purple);margin:1em 0 .4em}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+th,td{border-bottom:1px solid #e5e9f0;padding:7px 8px;text-align:left;vertical-align:top}
+th{background:#eef4fb}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.chip{background:#fff4e5;border:1px solid #ffd49a;border-radius:10px;padding:8px 10px;font-size:.95rem}
+.bubble{display:inline-block;background:#f0e6fa;border-radius:12px;padding:4px 10px;margin:3px;color:var(--purple);font-weight:600}
+.dlg p{margin:4px 0}
+.dlg b{color:var(--blue)}
+.btn{background:var(--blue);color:#fff;border:0;border-radius:10px;padding:10px 18px;font-size:1rem;cursor:pointer;font-weight:600}
+.btn:disabled{background:#9db4c9;cursor:not-allowed}
+.btn.sec{background:#fff;color:var(--blue);border:2px solid var(--blue)}
+input[type=text],input[type=password],input[type=search]{width:100%;padding:10px;border:1px solid #c9d3e0;border-radius:10px;font-size:1rem}
+label.lbl{font-weight:600;display:block;margin:10px 0 4px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.row2{grid-template-columns:1fr}}
+.timer{position:sticky;top:58px;z-index:4;background:var(--ink);color:#fff;border-radius:12px;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;font-size:1.15rem;font-weight:700;margin-bottom:14px}
+.timer.low{background:var(--bad);animation:pulse 1s infinite}
+@keyframes pulse{50%{opacity:.7}}
+.q{border-left:4px solid var(--orange);padding:6px 0 8px 12px;margin:14px 0}
+.q p{margin:0 0 6px;font-weight:600}
+.q label{display:block;padding:4px 0;cursor:pointer}
+.alert{padding:10px 14px;border-radius:10px;margin:10px 0}
+.alert.warn{background:#fff4e5;color:#7a4a00}
+.alert.err{background:#fdecea;color:var(--bad)}
+.alert.ok{background:#e8f5e9;color:var(--ok)}
+.center{text-align:center}
+.score{font-size:3rem;font-weight:800;color:var(--blue)}
+.qr{display:flex;flex-wrap:wrap;gap:20px;align-items:center}
+.qr img{border:8px solid #fff;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.hidden{display:none!important}
+.small{font-size:.85rem;color:var(--muted)}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0}
+.stat{background:#eef4fb;border-radius:10px;padding:8px 14px}
+.stat b{font-size:1.2rem;color:var(--blue)}
+details{margin:8px 0}
+summary{cursor:pointer;color:var(--purple);font-weight:600}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Unit 1 · Nice to Meet You</h1>
+  <p>English Level 1 · Recurso de clase y evaluación</p>
+</header>
+
+<nav>
+  <a href="#actividad" data-view="actividad">1. Actividad inicial</a>
+  <a href="#unidad" data-view="unidad">2. Contenido</a>
+  <a href="#evaluacion" data-view="evaluacion">3. Evaluación</a>
+  <a href="#docente" data-view="docente">Panel docente</a>
+</nav>
+
+<main>
+
+<!-- ============ 1. ACTIVIDAD ANTES DE EMPEZAR ============ -->
+<section id="actividad" class="view">
+  <div class="card">
+    <h2>Actividad antes de empezar</h2>
+    <p>Antes de la evaluación, practica con un compañero. Saluda, preséntate y dile de dónde eres.</p>
+    <ol>
+      <li>Di un saludo según la hora: <span class="bubble">Good morning.</span> <span class="bubble">Good evening.</span></li>
+      <li>Preséntate: <span class="bubble">Hello! My name is ...</span></li>
+      <li>Pregunta a tu compañero: <span class="bubble">What's your name?</span> <span class="bubble">Where are you from?</span></li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>Escanea el código QR para abrir la evaluación</h2>
+    <div class="qr">
+      <div id="qr" aria-label="Código QR de la evaluación"></div>
+      <div>
+        <p><b>Abre la evaluación desde tu celular.</b></p>
+        <p class="small">Enlace: <span id="urlQR"></span></p>
+        <p class="small">Solo podrás presentar la evaluación <b>una vez</b>. Tendrás <b>10 minutos</b>.</p>
+      </div>
+    </div>
+    <div id="alertaQR"></div>
+  </div>
+</section>
+
+<!-- ============ 2. CONTENIDO UNIDAD 1 ============ -->
+<section id="unidad" class="view">
+
+  <div class="card">
+    <h2>Vocabulary · Greetings and expressions of courtesy</h2>
+    <div class="grid">
+      <span class="chip">Hi</span><span class="chip">Hello</span><span class="chip">Good morning</span>
+      <span class="chip">Good afternoon</span><span class="chip">Good evening</span><span class="chip">Good night</span>
+      <span class="chip">Nice to meet you</span><span class="chip">Excuse me</span><span class="chip">Yes</span>
+      <span class="chip">No</span><span class="chip">Thank you</span><span class="chip">You're welcome</span>
+    </div>
+    <p>
+      <span class="bubble">Hello.</span> <span class="bubble">Nice to meet you.</span>
+      <span class="bubble">Thank you.</span> <span class="bubble">You're welcome.</span>
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Numbers 0 to 10</h2>
+    <div class="grid">
+      <span class="chip">0 · zero</span><span class="chip">1 · one</span><span class="chip">2 · two</span>
+      <span class="chip">3 · three</span><span class="chip">4 · four</span><span class="chip">5 · five</span>
+      <span class="chip">6 · six</span><span class="chip">7 · seven</span><span class="chip">8 · eight</span>
+      <span class="chip">9 · nine</span><span class="chip">10 · ten</span>
+    </div>
+    <p><span class="bubble">What's your phone number?</span> <span class="bubble">It's 892-555-0127.</span></p>
+  </div>
+
+  <div class="card">
+    <h2>In class</h2>
+    <div class="grid">
+      <span class="chip">student</span><span class="chip">teacher</span><span class="chip">class</span><span class="chip">room</span>
+    </div>
+    <p><span class="bubble">I'm a student.</span> <span class="bubble">This is room 302.</span></p>
+  </div>
+
+  <div class="card">
+    <h2>Conversation 1</h2>
+    <div class="dlg">
+      <p><b>Mr. Miller:</b> Hello! I'm your teacher. My name is Mr. Miller.</p>
+      <p><b>Robert:</b> Good morning, Mr. Miller.</p>
+      <p><b>Mr. Miller:</b> Good morning. What's your name?</p>
+      <p><b>Robert:</b> My name is Robert Brent.</p>
+      <p><b>Mr. Miller:</b> This is Ana Cruz. She's a student. She is in our class.</p>
+      <p><b>Robert:</b> Nice to meet you, Ana.</p>
+      <p><b>Ana:</b> Nice to meet you, too, Robert.</p>
+    </div>
+    <details>
+      <summary>Ver respuestas: Choose the correct answer</summary>
+      <p>1. Robert Brent is a <b>student</b>. · 2. The teacher is <b>Mr. Miller</b>. · 3. Ana Cruz is a <b>student</b>.</p>
+    </details>
+    <p class="small">Practice the conversation with two classmates.</p>
+  </div>
+
+  <div class="card">
+    <h2>Vocabulary · Countries</h2>
+    <div class="grid">
+      <span class="chip">Australia</span><span class="chip">Brazil</span><span class="chip">Canada</span>
+      <span class="chip">China</span><span class="chip">Colombia</span><span class="chip">Egypt</span>
+      <span class="chip">France</span><span class="chip">India</span><span class="chip">Italy</span>
+      <span class="chip">Japan</span><span class="chip">Mexico</span><span class="chip">Peru</span>
+      <span class="chip">South Korea</span><span class="chip">the United Kingdom (the UK)</span><span class="chip">the United States (the US)</span>
+    </div>
+    <p>
+      <span class="bubble">I'm from Mexico.</span> <span class="bubble">He's from Australia.</span>
+      <span class="bubble">She's from South Korea.</span>
+    </p>
+  </div>
+
+  <div class="card">
+    <h2>Conversation 2</h2>
+    <div class="dlg">
+      <p><b>Yasuko:</b> Excuse me. Is this room six?</p>
+      <p><b>Teacher:</b> No, this is room eight.</p>
+      <p><b>Yasuko:</b> Oh, thank you.</p>
+      <p><b>Yasuko:</b> Excuse me. Is this room six?</p>
+      <p><b>Mr. Miller:</b> Yes, it is.</p>
+      <p><b>Yasuko:</b> Thank you.</p>
+      <p><b>Mr. Miller:</b> You're welcome.</p>
+      <p><b>Mr. Miller:</b> I'm Mr. Miller. I'm your English teacher.</p>
+      <p><b>Yasuko:</b> Good morning, Mr. Miller.</p>
+      <p><b>Mr. Miller:</b> What's your name?</p>
+      <p><b>Yasuko:</b> My name is Yasuko Hirano.</p>
+      <p><b>Mr. Miller:</b> Where are you from, Yasuko?</p>
+      <p><b>Yasuko:</b> I'm from Japan.</p>
+    </div>
+    <details>
+      <summary>Ver respuestas: Choose the correct answer</summary>
+      <p>1. Yasuko's English class is in <b>room 6</b>. · 2. Yasuko is from <b>Japan</b>. · 3. Mr. Miller is <b>a teacher</b>.</p>
+    </details>
+  </div>
+
+  <div class="card">
+    <h2>Grammar · Statements with <i>be</i> · Subject pronouns</h2>
+    <table>
+      <tr><th>Affirmative</th><th>Negative</th></tr>
+      <tr><td>I am a student.</td><td>I am not a teacher.</td></tr>
+      <tr><td>You are a teacher.</td><td>You are not a teacher.</td></tr>
+      <tr><td>He is a teacher.</td><td>He is not a student.</td></tr>
+      <tr><td>She is a student.</td><td>She is not a student.</td></tr>
+      <tr><td>It is room 302.</td><td>It is not room 202.</td></tr>
+      <tr><td>We are students.</td><td>We are not teachers.</td></tr>
+      <tr><td>They are teachers.</td><td>They are not students.</td></tr>
+    </table>
+    <h3>Contractions</h3>
+    <table>
+      <tr><th>Full form</th><th>Contraction</th></tr>
+      <tr><td>I am / I am not</td><td>I'm / I'm not</td></tr>
+      <tr><td>you are / you are not</td><td>you're / you're not · you aren't</td></tr>
+      <tr><td>he is / he is not</td><td>he's / he's not · he isn't</td></tr>
+      <tr><td>she is / she is not</td><td>she's / she's not · she isn't</td></tr>
+      <tr><td>it is / it is not</td><td>it's / it's not · it isn't</td></tr>
+      <tr><td>we are / we are not</td><td>we're / we're not · we aren't</td></tr>
+      <tr><td>they are / they are not</td><td>they're / they're not · they aren't</td></tr>
+    </table>
+    <details>
+      <summary>Ver respuestas: Choose the correct answer</summary>
+      <p>1. She <b>is</b> in room 3. They <b>are</b> in room 5. · 2. You <b>are</b> in my class. My name <b>is</b> Elena. · 3. I <b>am</b> in English class. Sara <b>is</b> in my class, too. We <b>are</b> students. · 4. Tony <b>isn't</b> a student. He <b>is</b> a teacher. · 5. Ms. Jackson <b>isn't</b> a student. She <b>is</b> an English teacher. · 6. It <b>is</b> room 115. It <b>isn't</b> room 515.</p>
+    </details>
+  </div>
+
+  <div class="card">
+    <h2>Wh- questions with <i>be</i></h2>
+    <table>
+      <tr><th>Question</th><th>Answer</th></tr>
+      <tr><td>What is your name?</td><td>My name is Juan.</td></tr>
+      <tr><td>Where is Ana from?</td><td>She's from Mexico.</td></tr>
+      <tr><td>Where are they from?</td><td>They're from Australia.</td></tr>
+      <tr><td>Who is Mr. Miller?</td><td>He's the English teacher.</td></tr>
+      <tr><td>Who are they?</td><td>They're students in my class.</td></tr>
+    </table>
+    <p class="small">Contractions: What is = What's · Where is = Where's · Who is = Who's</p>
+    <details>
+      <summary>Ver respuestas: Complete the questions and answers</summary>
+      <p>1. <b>Where is</b> he from? He <b>is</b> from France. · 2. <b>What is</b> your name? My name <b>is</b> Ben. · 3. <b>Where are</b> they from? They <b>are</b> from India. · 4. <b>Who is</b> Ms. Diaz? She <b>is</b> an English teacher. · 5. <b>Where are</b> you from? We <b>are</b> from Mexico. · 6. <b>Who are</b> they? They <b>are</b> my friends.</p>
+    </details>
+  </div>
+
+  <div class="card">
+    <h2>Mechanics · Abbreviations for titles</h2>
+    <table>
+      <tr><th>Title</th><th>Pronunciation</th><th>Use</th></tr>
+      <tr><td><b>Mr.</b></td><td>/ˈmɪstər/</td><td>The man is married or single.</td></tr>
+      <tr><td><b>Ms.</b></td><td>/mɪz/</td><td>The woman is married or single.</td></tr>
+      <tr><td><b>Mrs.</b></td><td>/ˈmɪsɪz/</td><td>The woman is married.</td></tr>
+    </table>
+    <p class="small">Example: <span class="bubble">Ms. Greene and Mr. Stevens are my teachers.</span></p>
+  </div>
+</section>
+
+<!-- ============ 3. EVALUACIÓN ============ -->
+<section id="evaluacion" class="view">
+
+  <div class="card">
+    <h2>Evaluación · Unit 1</h2>
+    <ul>
+      <li>20 preguntas de opción múltiple · cada una vale <b>0,5 puntos</b> · total <b>10 puntos</b>.</li>
+      <li>Tiempo: <b>10 minutos</b>. El examen se envía automáticamente al terminar el tiempo.</li>
+      <li>Solo se permite <b>un intento</b>. Tu nota se guarda con tus nombres y apellidos.</li>
+    </ul>
+    <div id="alertaEval"></div>
+  </div>
+
+  <!-- Formulario de identificación -->
+  <div class="card" id="formulario">
+    <h2>Datos del estudiante</h2>
+    <div class="row2">
+      <div>
+        <label class="lbl" for="nombres">Nombres</label>
+        <input type="text" id="nombres" autocomplete="off" placeholder="Ej. Robert Andrés">
+      </div>
+      <div>
+        <label class="lbl" for="apellidos">Apellidos</label>
+        <input type="text" id="apellidos" autocomplete="off" placeholder="Ej. Brent Mora">
+      </div>
+    </div>
+    <p style="margin-top:14px"><button class="btn" id="btnComenzar">Comenzar evaluación</button></p>
+  </div>
+
+  <!-- Prueba -->
+  <div id="prueba" class="hidden">
+    <div class="timer" id="timerBox">
+      <span>Tiempo restante: <span id="tiempo">10:00</span></span>
+      <span style="font-size:.95rem;font-weight:500" id="datosAlumno"></span>
+    </div>
+    <div class="card">
+      <div id="preguntas"></div>
+      <p class="center"><button class="btn" id="btnEnviar">Terminar y enviar</button></p>
+    </div>
+  </div>
+
+  <!-- Resultado -->
+  <div class="card center hidden" id="resultado">
+    <h2>¡Evaluación enviada!</h2>
+    <div class="score" id="notaFinal"></div>
+    <p id="detalleNota"></p>
+    <p class="small">Tu nota quedó guardada. Ya puedes cerrar esta página.</p>
+  </div>
+</section>
+
+<!-- ============ 4. PANEL DOCENTE ============ -->
+<section id="docente" class="view">
+  <div class="card">
+    <h2>Panel docente · Notas</h2>
+    <div class="row2">
+      <div>
+        <label class="lbl" for="claveDocente">Clave docente</label>
+        <input type="password" id="claveDocente" autocomplete="off">
+      </div>
+      <div style="align-self:end">
+        <button class="btn" id="btnVerNotas">Ver notas</button>
+        <button class="btn sec" id="btnActualizar" disabled>Actualizar</button>
+      </div>
+    </div>
+    <div id="alertaDoc"></div>
+  </div>
+
+  <div class="card hidden" id="panelNotas">
+    <div class="stats">
+      <div class="stat">Estudiantes: <b id="stTotal">0</b></div>
+      <div class="stat">Promedio: <b id="stPromedio">0</b> / 10</div>
+      <div class="stat">Nota más alta: <b id="stMax">0</b></div>
+      <div class="stat">Nota más baja: <b id="stMin">0</b></div>
+    </div>
+    <div class="row2" style="margin-bottom:10px">
+      <input type="search" id="buscar" placeholder="Buscar por apellido o nombre...">
+      <div><button class="btn sec" id="btnCSV">Descargar CSV (Excel)</button></div>
+    </div>
+    <div style="overflow-x:auto">
+      <table>
+        <thead>
+          <tr><th>#</th><th>Apellidos</th><th>Nombres</th><th>Puntaje (/10)</th><th>Correctas (de 20)</th><th>Tiempo</th><th>Fecha</th></tr>
+        </thead>
+        <tbody id="cuerpoNotas"></tbody>
+      </table>
+    </div>
+    <p class="small">Ordenado alfabéticamente por apellidos.</p>
+  </div>
+</section>
+
+</main>
+
+<script>
+/* ==================== CONFIGURACIÓN ==================== */
+const CONFIG = {
+  // URL de la aplicación web de Google Apps Script (termina en /exec)
+  API_URL: 'https://script.google.com/macros/s/AKfycbx-XgnFoyOHvz5s2zh7aovahsBUqO-QVI6IjKh_eiG6oK7DB68yT7Yt5nOF94rz8zuK/exec',
+  // URL pública donde alojas esta página (para el QR). Vacío = usa la URL actual.
+  EVAL_URL: '',
+  // Tiempo en segundos (10 minutos)
+  TIME_LIMIT: 600
+};
+
+/* 20 preguntas · 0,5 pt c/u · la clave de respuestas está en Code.gs (RESPUESTAS) */
+const QUESTIONS = [
+  {q:'It is 9:00 in the morning. What do you say to your classmates?', o:['Good night','Good morning','Good evening']},
+  {q:'It is 10:00 p.m. and you are leaving class. What do you say?', o:['Good night','Good afternoon','Hi']},
+  {q:'You meet someone for the first time. What do you say?', o:['Excuse me','Thank you','Nice to meet you']},
+  {q:'Someone says "Thank you." What do you answer?', o:['Yes',"You're welcome",'Good evening']},
+  {q:'You want to pass someone in the hallway. What do you say?', o:['Excuse me','Hello','No']},
+  {q:'Which word is the number 7?', o:['six','seven','eight']},
+  {q:'Which word means "aula" (the place where lessons happen)?', o:['room','teacher','country']},
+  {q:'In Conversation 1, who is the teacher?', o:['Mr. Cruz','Mr. Miller','Ana Cruz']},
+  {q:'In Conversation 1, Robert Brent is a ___.', o:['teacher','student','room']},
+  {q:"In Conversation 2, Yasuko's English class is in ___.", o:['room 6','room 8','room 302']},
+  {q:'In Conversation 2, Yasuko is from ___.', o:['Japan','Jamaica','Mexico']},
+  {q:'How do you say "Brasil" in English?', o:['Brazil','Bolivia','Peru']},
+  {q:'She ___ a student.', o:['am','is','are']},
+  {q:'They ___ in room 5.', o:['is','am','are']},
+  {q:'Choose the negative form: Tony ___ a student.', o:["isn't","aren't",'am not']},
+  {q:'Choose the negative form: We ___ students.', o:['am not',"isn't","aren't"]},
+  {q:'___ is your name? My name is Juan.', o:['Where','What','Who']},
+  {q:'___ are they from? They\'re from Australia.', o:['Where','Who','What']},
+  {q:'___ is Mr. Miller? He\'s the English teacher.', o:['What','Who','Where']},
+  {q:'Mrs. is used for a woman who is ___.', o:['single','married','a student']}
+];
+
+/* ==================== UTILIDADES ==================== */
+const STATE_KEY = 'ut1_en_curso';
+const $ = id => document.getElementById(id);
+const enc = encodeURIComponent;
+const configurado = () => CONFIG.API_URL && !CONFIG.API_URL.startsWith('PEGA_AQUI');
+const esc = t => String(t ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function alerta(id, msg, tipo){ $(id).innerHTML = `<div class="alert ${tipo}">${esc(msg)}</div>`; }
+
+/* ==================== NAVEGACIÓN ==================== */
+function mostrarVista(){
+  const v = (location.hash || '#actividad').slice(1);
+  const vista = ['actividad','unidad','evaluacion','docente'].includes(v) ? v : 'actividad';
+  document.querySelectorAll('.view').forEach(s => s.classList.toggle('active', s.id === vista));
+  document.querySelectorAll('nav a').forEach(a => a.classList.toggle('active', a.dataset.view === vista));
+  window.scrollTo(0,0);
+}
+
+/* ==================== QR ==================== */
+function generarQR(){
+  let url = CONFIG.EVAL_URL || (location.href.split('#')[0] + '#evaluacion');
+  $('urlQR').textContent = url;
+  if (location.protocol === 'file:' && !CONFIG.EVAL_URL) {
+    alerta('alertaQR', 'Estás abriendo el archivo desde tu computadora. Para que el QR funcione en los celulares, aloja la página en internet y configura EVAL_URL.', 'warn');
+  }
+  try {
+    const qr = qrcode(0, 'M');
+    qr.addData(url);
+    qr.make();
+    $('qr').innerHTML = qr.createImgTag(6, 8);
+  } catch (e) {
+    $('qr').textContent = 'No se pudo generar el QR (revisa tu conexión). Usa el enlace de abajo.';
+  }
+}
+
+/* ==================== PREGUNTAS ==================== */
+function renderPreguntas(){
+  $('preguntas').innerHTML = QUESTIONS.map((item, i) => `
+    <div class="q">
+      <p>${i+1}. ${esc(item.q)}</p>
+      ${item.o.map((t, j) => `<label><input type="radio" name="q${i}" value="${j}"> ${esc(t)}</label>`).join('')}
+    </div>`).join('');
+  $('preguntas').addEventListener('change', guardarRespuestas);
+}
+function guardarRespuestas(){
+  if (!state) return;
+  state.respuestas = QUESTIONS.map((_, i) => {
+    const r = document.querySelector(`input[name="q${i}"]:checked`);
+    return r ? Number(r.value) : null;
+  });
+  localStorage.setItem(STATE_KEY, JSON.stringify(state));
+}
+
+/* ==================== EVALUACIÓN ==================== */
+let state = null, timerId = null, enviado = false;
+
+async function comenzar(){
+  const apellidos = $('apellidos').value.trim(), nombres = $('nombres').value.trim();
+  if (!apellidos || !nombres) return alerta('alertaEval', 'Escribe tus nombres y tus apellidos.', 'warn');
+  if (!configurado()) return alerta('alertaEval', 'El docente aún no ha configurado la conexión (API_URL).', 'err');
+  $('btnComenzar').disabled = true;
+  try {
+    const r = await fetch(`${CONFIG.API_URL}?action=check&apellidos=${enc(apellidos)}&nombres=${enc(nombres)}`);
+    const d = await r.json();
+    if (d.realizado) return alerta('alertaEval', 'Ya realizaste esta evaluación. Solo se permite un intento.', 'err');
+    state = { apellidos, nombres, inicio: Date.now(), respuestas: [] };
+    localStorage.setItem(STATE_KEY, JSON.stringify(state));
+    abrirPrueba();
+  } catch (e) {
+    alerta('alertaEval', 'No se pudo conectar con el servidor. Revisa tu conexión e inténtalo de nuevo.', 'err');
+  } finally {
+    $('btnComenzar').disabled = false;
+  }
+}
+
+function abrirPrueba(){
+  $('formulario').classList.add('hidden');
+  $('alertaEval').innerHTML = '';
+  $('prueba').classList.remove('hidden');
+  $('datosAlumno').textContent = `${state.apellidos}, ${state.nombres}`;
+  (state.respuestas || []).forEach((v, i) => {
+    if (v !== null && v !== undefined) {
+      const el = document.querySelector(`input[name="q${i}"][value="${v}"]`);
+      if (el) el.checked = true;
+    }
+  });
+  if (location.hash !== '#evaluacion') location.hash = 'evaluacion';
+  clearInterval(timerId);
+  tick();
+  timerId = setInterval(tick, 1000);
+}
+
+function tick(){
+  const restante = CONFIG.TIME_LIMIT - Math.floor((Date.now() - state.inicio) / 1000);
+  if (restante <= 0) {
+    clearInterval(timerId);
+    $('tiempo').textContent = '00:00';
+    enviar(true);
+    return;
+  }
+  const m = Math.floor(restante / 60), s = restante % 60;
+  $('tiempo').textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  $('timerBox').classList.toggle('low', restante <= 60);
+}
+
+function confirmarEnvio(){
+  if (confirm('¿Terminar y enviar la evaluación ahora? No podrás volver a presentarla.')) enviar(false);
+}
+
+async function enviar(automatico){
+  if (enviado) return;
+  enviado = true;
+  clearInterval(timerId);
+  $('btnEnviar').disabled = true;
+
+  const respuestas = QUESTIONS.map((_, i) => {
+    const r = document.querySelector(`input[name="q${i}"]:checked`);
+    return r ? 'abc'[r.value] : '';
+  });
+  const sinResponder = respuestas.filter(x => !x).length;
+  const tiempo = Math.min(CONFIG.TIME_LIMIT, Math.round((Date.now() - state.inicio) / 1000));
+
+  try {
+    const r = await fetch(CONFIG.API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ apellidos: state.apellidos, nombres: state.nombres, answers: respuestas, tiempo })
+    });
+    const d = await r.json();
+    if (!d.ok) throw new Error(d.error);
+    localStorage.removeItem(STATE_KEY);
+    mostrarResultado(d, automatico, sinResponder);
+  } catch (e) {
+    const yaRealizado = String(e.message).includes('Ya realizaste');
+    if (yaRealizado) localStorage.removeItem(STATE_KEY);
+    enviado = false;
+    $('btnEnviar').disabled = false;
+    $('btnEnviar').textContent = yaRealizado ? 'Terminar y enviar' : 'Reintentar envío';
+    alerta('alertaEval', yaRealizado
+      ? 'Ya realizaste esta evaluación. Solo se permite un intento.'
+      : `No se pudo guardar la nota (${e.message}). Tus respuestas siguen aquí; pulsa "Reintentar envío".`, 'err');
+    if (yaRealizado) $('prueba').classList.add('hidden');
+  }
+}
+
+function mostrarResultado(d, automatico, sinResponder){
+  $('prueba').classList.add('hidden');
+  $('resultado').classList.remove('hidden');
+  $('notaFinal').textContent = `${Number(d.puntaje).toFixed(1)} / 10`;
+  let txt = `Respuestas correctas: ${d.correctas} de ${QUESTIONS.length}.`;
+  if (automatico) txt += ' Se acabó el tiempo y la evaluación se envió automáticamente.';
+  if (sinResponder) txt += ` Preguntas sin responder: ${sinResponder}.`;
+  $('detalleNota').textContent = txt;
+}
+
+/* ==================== PANEL DOCENTE ==================== */
+let filas = [];
+
+async function cargarNotas(){
+  const clave = $('claveDocente').value;
+  if (!configurado()) return alerta('alertaDoc', 'Falta configurar API_URL en la página.', 'err');
+  if (!clave) return alerta('alertaDoc', 'Escribe la clave docente.', 'warn');
+  $('btnVerNotas').disabled = true;
+  try {
+    const r = await fetch(`${CONFIG.API_URL}?action=list&key=${enc(clave)}`);
+    const d = await r.json();
+    if (!d.ok) return alerta('alertaDoc', d.error, 'err');
+    filas = d.rows.sort((a, b) =>
+      String(a.apellidos).localeCompare(String(b.apellidos), 'es', {sensitivity:'base'}) ||
+      String(a.nombres).localeCompare(String(b.nombres), 'es', {sensitivity:'base'}));
+    $('alertaDoc').innerHTML = '';
+    $('panelNotas').classList.remove('hidden');
+    $('btnActualizar').disabled = false;
+    pintarNotas();
+  } catch (e) {
+    alerta('alertaDoc', 'No se pudieron cargar las notas. Revisa la conexión o la clave.', 'err');
+  } finally {
+    $('btnVerNotas').disabled = false;
+  }
+}
+
+function pintarNotas(){
+  const q = $('buscar').value.trim().toLowerCase();
+  const visibles = filas.filter(f => `${f.apellidos} ${f.nombres}`.toLowerCase().includes(q));
+  $('cuerpoNotas').innerHTML = visibles.map((f, i) => `
+    <tr>
+      <td>${i+1}</td>
+      <td>${esc(f.apellidos)}</td>
+      <td>${esc(f.nombres)}</td>
+      <td><b>${Number(f.puntaje).toFixed(1)}</b></td>
+      <td>${esc(f.correctas)}</td>
+      <td>${esc(f.tiempo)} s</td>
+      <td>${esc(f.fecha)}</td>
+    </tr>`).join('') || '<tr><td colspan="7" class="center small">Aún no hay evaluaciones enviadas.</td></tr>';
+
+  const notas = filas.map(f => Number(f.puntaje));
+  const prom = notas.length ? notas.reduce((a, b) => a + b, 0) / notas.length : 0;
+  $('stTotal').textContent = filas.length;
+  $('stPromedio').textContent = prom.toFixed(1);
+  $('stMax').textContent = notas.length ? Math.max(...notas).toFixed(1) : '0';
+  $('stMin').textContent = notas.length ? Math.min(...notas).toFixed(1) : '0';
+}
+
+function descargarCSV(){
+  const cab = ['Apellidos','Nombres','Puntaje (/10)','Correctas','Tiempo (s)','Fecha'];
+  const lineas = [cab.join(';'), ...filas.map(f =>
+    [f.apellidos, f.nombres, Number(f.puntaje).toFixed(1).replace('.',','), f.correctas, f.tiempo, f.fecha]
+      .map(v => `"${String(v ?? '').replace(/"/g,'""')}"`).join(';'))];
+  const blob = new Blob(['﻿' + lineas.join('\n')], {type:'text/csv;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'notas_unidad1.csv';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+/* ==================== EVENTOS E INICIO ==================== */
+$('btnComenzar').addEventListener('click', comenzar);
+$('btnEnviar').addEventListener('click', confirmarEnvio);
+$('btnVerNotas').addEventListener('click', cargarNotas);
+$('btnActualizar').addEventListener('click', cargarNotas);
+$('buscar').addEventListener('input', pintarNotas);
+$('btnCSV').addEventListener('click', descargarCSV);
+$('claveDocente').addEventListener('keydown', e => { if (e.key === 'Enter') cargarNotas(); });
+window.addEventListener('hashchange', mostrarVista);
+
+renderPreguntas();
+generarQR();
+
+// Si el estudiante recargó la página durante la prueba, se retoma con el tiempo restante
+const guardado = JSON.parse(localStorage.getItem(STATE_KEY) || 'null');
+if (guardado) {
+  state = guardado;
+  location.hash = 'evaluacion';
+  abrirPrueba();
+}
+mostrarVista();
+</script>
+</body>
+</html>
