@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unidad 2 · I Live Near Here · Quiz</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<style>
+:root{--blue:#1769aa;--orange:#f39a2b;--purple:#7b3fa0;--bg:#f5f7fb;--card:#fff;--ink:#1d2433;--muted:#667085;--ok:#2e7d32;--bad:#c62828}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+header{background:linear-gradient(90deg,var(--orange),#ffb75e);color:#fff;padding:18px 20px}
+header h1{margin:0;font-size:1.4rem}
+header p{margin:4px 0 0;opacity:.95}
+nav{display:flex;flex-wrap:wrap;gap:6px;background:#fff;padding:10px 14px;position:sticky;top:0;z-index:5;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+nav a{padding:8px 14px;border-radius:999px;text-decoration:none;color:var(--blue);font-weight:600;font-size:.95rem}
+nav a.active{background:var(--blue);color:#fff}
+main{max-width:900px;margin:0 auto;padding:18px}
+.view{display:none}
+.view.active{display:block}
+.card{background:var(--card);border-radius:14px;padding:18px 20px;margin:0 0 16px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+h2{color:var(--blue);margin:.2em 0 .6em}
+table{width:100%;border-collapse:collapse;font-size:.95rem}
+th,td{border-bottom:1px solid #e5e9f0;padding:7px 8px;text-align:left;vertical-align:top}
+th{background:#eef4fb}
+.bubble{display:inline-block;background:#f0e6fa;border-radius:12px;padding:4px 10px;margin:3px;color:var(--purple);font-weight:600}
+.btn{background:var(--blue);color:#fff;border:0;border-radius:10px;padding:10px 18px;font-size:1rem;cursor:pointer;font-weight:600}
+.btn:disabled{background:#9db4c9;cursor:not-allowed}
+.btn.sec{background:#fff;color:var(--blue);border:2px solid var(--blue)}
+input[type=text],input[type=password],input[type=search]{width:100%;padding:10px;border:1px solid #c9d3e0;border-radius:10px;font-size:1rem}
+label.lbl{font-weight:600;display:block;margin:10px 0 4px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.row2{grid-template-columns:1fr}}
+.timer{position:sticky;top:58px;z-index:4;background:var(--ink);color:#fff;border-radius:12px;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;font-size:1.15rem;font-weight:700;margin-bottom:14px}
+.timer.low{background:var(--bad);animation:pulse 1s infinite}
+@keyframes pulse{50%{opacity:.7}}
+.q{border-left:4px solid var(--orange);padding:6px 0 8px 12px;margin:14px 0}
+.q p{margin:0 0 6px;font-weight:600}
+.q label{display:block;padding:4px 0;cursor:pointer}
+.alert{padding:10px 14px;border-radius:10px;margin:10px 0}
+.alert.warn{background:#fff4e5;color:#7a4a00}
+.alert.err{background:#fdecea;color:var(--bad)}
+.center{text-align:center}
+.score{font-size:3rem;font-weight:800;color:var(--blue)}
+.qr{display:flex;flex-wrap:wrap;gap:20px;align-items:center}
+.qr img{border:8px solid #fff;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.hidden{display:none!important}
+.small{font-size:.85rem;color:var(--muted)}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0}
+.stat{background:#eef4fb;border-radius:10px;padding:8px 14px}
+.stat b{font-size:1.2rem;color:var(--blue)}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Unit 2 · I Live Near Here</h1>
+  <p>English Level 1 · Quiz</p>
+</header>
+
+<nav>
+  <a href="#actividad" data-view="actividad">1. Actividad inicial</a>
+  <a href="#evaluacion" data-view="evaluacion">2. Quiz</a>
+  <a href="#docente" data-view="docente">Panel docente</a>
+</nav>
+
+<main>
+
+<!-- ============ 1. ACTIVIDAD ============ -->
+<section id="actividad" class="view">
+  <div class="card">
+    <h2>Actividad antes de empezar</h2>
+    <p>Practica con un compañero antes del quiz:</p>
+    <ol>
+      <li>Días de la semana: <span class="bubble">Today is Wednesday.</span> <span class="bubble">Tomorrow is Thursday.</span></li>
+      <li>Números: <span class="bubble">I'm 22 years old.</span> <span class="bubble">She's 54 years old.</span></li>
+      <li>Lugares: <span class="bubble">I live in Los Angeles.</span> <span class="bubble">Where do you work?</span></li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>Escanea el código QR para abrir el quiz</h2>
+    <div class="qr">
+      <div id="qr"></div>
+      <div>
+        <p><b>Abre el quiz desde tu celular.</b></p>
+        <p class="small">Enlace: <span id="urlQR"></span></p>
+        <p class="small">Solo podrás presentarlo <b>una vez</b>. Tendrás <b>10 minutos</b>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. QUIZ ============ -->
+<section id="evaluacion" class="view">
+  <div class="card">
+    <h2>Quiz · Unit 2</h2>
+    <ul>
+      <li>20 preguntas de opción múltiple · cada una vale <b>0,5 puntos</b> · total <b>10 puntos</b>.</li>
+      <li>Tiempo: <b>10 minutos</b>. El quiz se envía automáticamente al terminar el tiempo.</li>
+      <li>Solo se permite <b>un intento</b>. Tu nota se guarda con tus nombres y apellidos.</li>
+    </ul>
+    <div id="alertaEval"></div>
+  </div>
+
+  <div class="card" id="formulario">
+    <h2>Datos del estudiante</h2>
+    <div class="row2">
+      <div>
+        <label class="lbl" for="nombres">Nombres</label>
+        <input type="text" id="nombres" autocomplete="off">
+      </div>
+      <div>
+        <label class="lbl" for="apellidos">Apellidos</label>
+        <input type="text" id="apellidos" autocomplete="off">
+      </div>
+    </div>
+    <p style="margin-top:14px"><button class="btn" id="btnComenzar">Comenzar quiz</button></p>
+  </div>
+
+  <div id="prueba" class="hidden">
+    <div class="timer" id="timerBox">
+      <span>Tiempo restante: <span id="tiempo">10:00</span></span>
+      <span style="font-size:.95rem;font-weight:500" id="datosAlumno"></span>
+    </div>
+    <div class="card">
+      <div id="preguntas"></div>
+      <p class="center"><button class="btn" id="btnEnviar">Terminar y enviar</button></p>
+    </div>
+  </div>
+
+  <div class="card center hidden" id="resultado">
+    <h2>¡Quiz enviado!</h2>
+    <div class="score" id="notaFinal"></div>
+    <p id="detalleNota"></p>
+    <p class="small">Tu nota quedó guardada. Ya puedes cerrar esta página.</p>
+  </div>
+</section>
+
+<!-- ============ 3. PANEL DOCENTE ============ -->
+<section id="docente" class="view">
+  <div class="card">
+    <h2>Panel docente · Notas Unit 2</h2>
+    <div class="row2">
+      <div>
+        <label class="lbl" for="claveDocente">Clave docente</label>
+        <input type="password" id="claveDocente" autocomplete="off">
+      </div>
+      <div style="align-self:end">
+        <button class="btn" id="btnVerNotas">Ver notas</button>
+        <button class="btn sec" id="btnActualizar" disabled>Actualizar</button>
+      </div>
+    </div>
+    <div id="alertaDoc"></div>
+  </div>
+
+  <div class="card hidden" id="panelNotas">
+    <div class="stats">
+      <div class="stat">Estudiantes: <b id="stTotal">0</b></div>
+      <div class="stat">Promedio: <b id="stPromedio">0</b> / 10</div>
+      <div class="stat">Más alta: <b id="stMax">0</b></div>
+      <div class="stat">Más baja: <b id="stMin">0</b></div>
+    </div>
+    <div class="row2" style="margin-bottom:10px">
+      <input type="search" id="buscar" placeholder="Buscar por apellido o nombre...">
+      <div><button class="btn sec" id="btnCSV">Descargar CSV (Excel)</button></div>
+    </div>
+    <div style="overflow-x:auto">
+      <table>
+        <thead>
+          <tr><th>#</th><th>Apellidos</th><th>Nombres</th><th>Puntaje (/10)</th><th>Correctas (de 20)</th><th>Tiempo</th><th>Fecha</th></tr>
+        </thead>
+        <tbody id="cuerpoNotas"></tbody>
+      </table>
+    </div>
+    <p class="small">Ordenado alfabéticamente por apellidos.</p>
+  </div>
+</section>
+
+</main>
+
+<script>
+/* ==================== CONFIGURACIÓN ==================== */
+const CONFIG = {
+  API_URL: 'https://script.google.com/macros/s/AKfycbx-XgnFoyOHvz5s2zh7aovahsBUqO-QVI6IjKh_eiG6oK7DB68yT7Yt5nOF94rz8zuK/exec',
+  QUIZ: 'Unit2',          // nombre de la pestaña donde se guardan las notas de este quiz
+  EVAL_URL: '',           // vacío = usa la dirección de esta página para el QR
+  TIME_LIMIT: 600         // 10 minutos
+};
+
+/* 20 preguntas · 0,5 pt c/u · c = posición de la respuesta correcta (0 = primera opción) */
+const QUESTIONS = [
+  {q:'Today is Wednesday. Tomorrow is ___.', o:['Tuesday','Thursday','Friday'], c:1},
+  {q:'Which day is NOT part of the weekend?', o:['Saturday','Friday','Sunday'], c:1},
+  {q:'Which number is "nineteen"?', o:['13','19','90'], c:1},
+  {q:'How do you write 70?', o:['seventeen','seven','seventy'], c:2},
+  {q:'How do you write 22?', o:['twelve','twenty-two','twenty'], c:1},
+  {q:'How do you write 54?', o:['forty-five','fifty','fifty-four'], c:2},
+  {q:'How do you say "100" in English?', o:['hundred one','ten hundred','one hundred'], c:2},
+  {q:'Which phrase means "lejos de aquí"?', o:['near here','here','far from here'], c:2},
+  {q:'Portland is 35 ___ from here.', o:['years','kilometers','days'], c:1},
+  {q:'I ___ in Brooklyn.', o:['lives','living','live'], c:2},
+  {q:'We ___ study on the weekend.', o:["doesn't","aren't","don't"], c:2},
+  {q:'You ___ live in Houston.', o:["isn't","am not","don't"], c:2},
+  {q:'They ___ in Oakland.', o:['works','working','work'], c:2},
+  {q:'Which sentence is correct?', o:['I not live in Manhattan.',"I doesn't live in Manhattan.","I don't live in Manhattan."], c:2},
+  {q:'Which helping verb is used in negative sentences with I, you, we and they?', o:['does',"don't",'is'], c:1},
+  {q:'___ do you live? I live in Philadelphia.', o:['Who','Where','When'], c:1},
+  {q:'___ do they study? They study on Sunday.', o:['When','Where','Who'], c:0},
+  {q:'___ do we work? We work in Baltimore.', o:['Who','When','Where'], c:2},
+  {q:'Which question is correct?', o:['Where you do live?','Where live do you?','Where do you live?'], c:2},
+  {q:'I ___ 22 years old.', o:['is','are','am'], c:2}
+];
+
+/* ==================== UTILIDADES ==================== */
+const STATE_KEY = 'quiz_u2_en_curso';
+const $ = id => document.getElementById(id);
+const enc = encodeURIComponent;
+const configurado = () => CONFIG.API_URL && !CONFIG.API_URL.startsWith('PEGA_AQUI');
+const esc = t => String(t ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function alerta(id, msg, tipo){ $(id).innerHTML = `<div class="alert ${tipo}">${esc(msg)}</div>`; }
+
+/* ==================== NAVEGACIÓN ==================== */
+function mostrarVista(){
+  const v = (location.hash || '#actividad').slice(1);
+  const vista = ['actividad','evaluacion','docente'].includes(v) ? v : 'actividad';
+  document.querySelectorAll('.view').forEach(s => s.classList.toggle('active', s.id === vista));
+  document.querySelectorAll('nav a').forEach(a => a.classList.toggle('active', a.dataset.view === vista));
+  window.scrollTo(0,0);
+}
+
+/* ==================== QR ==================== */
+function generarQR(){
+  const url = CONFIG.EVAL_URL || (location.href.split('#')[0] + '#evaluacion');
+  $('urlQR').textContent = url;
+  try {
+    const qr = qrcode(0, 'M');
+    qr.addData(url);
+    qr.make();
+    $('qr').innerHTML = qr.createImgTag(6, 8);
+  } catch (e) {
+    $('qr').textContent = 'No se pudo generar el QR. Usa el enlace de abajo.';
+  }
+}
+
+/* ==================== PREGUNTAS ==================== */
+function renderPreguntas(){
+  $('preguntas').innerHTML = QUESTIONS.map((item, i) => `
+    <div class="q">
+      <p>${i+1}. ${esc(item.q)}</p>
+      ${item.o.map((t, j) => `<label><input type="radio" name="q${i}" value="${j}"> ${esc(t)}</label>`).join('')}
+    </div>`).join('');
+  $('preguntas').addEventListener('change', guardarRespuestas);
+}
+function guardarRespuestas(){
+  if (!state) return;
+  state.respuestas = QUESTIONS.map((_, i) => {
+    const r = document.querySelector(`input[name="q${i}"]:checked`);
+    return r ? Number(r.value) : null;
+  });
+  localStorage.setItem(STATE_KEY, JSON.stringify(state));
+}
+
+/* ==================== QUIZ ==================== */
+let state = null, timerId = null, enviado = false;
+
+async function comenzar(){
+  const apellidos = $('apellidos').value.trim(), nombres = $('nombres').value.trim();
+  if (!apellidos || !nombres) return alerta('alertaEval', 'Escribe tus nombres y tus apellidos.', 'warn');
+  if (!configurado()) return alerta('alertaEval', 'El docente aún no ha configurado la conexión.', 'err');
+  $('btnComenzar').disabled = true;
+  try {
+    const r = await fetch(`${CONFIG.API_URL}?action=check&quiz=${enc(CONFIG.QUIZ)}&apellidos=${enc(apellidos)}&nombres=${enc(nombres)}`);
+    const d = await r.json();
+    if (d.realizado) return alerta('alertaEval', 'Ya realizaste este quiz. Solo se permite un intento.', 'err');
+    state = { apellidos, nombres, inicio: Date.now(), respuestas: [] };
+    localStorage.setItem(STATE_KEY, JSON.stringify(state));
+    abrirPrueba();
+  } catch (e) {
+    alerta('alertaEval', 'No se pudo conectar con el servidor. Revisa tu conexión e inténtalo de nuevo.', 'err');
+  } finally {
+    $('btnComenzar').disabled = false;
+  }
+}
+
+function abrirPrueba(){
+  $('formulario').classList.add('hidden');
+  $('alertaEval').innerHTML = '';
+  $('prueba').classList.remove('hidden');
+  $('datosAlumno').textContent = `${state.apellidos}, ${state.nombres}`;
+  (state.respuestas || []).forEach((v, i) => {
+    if (v !== null && v !== undefined) {
+      const el = document.querySelector(`input[name="q${i}"][value="${v}"]`);
+      if (el) el.checked = true;
+    }
+  });
+  if (location.hash !== '#evaluacion') location.hash = 'evaluacion';
+  clearInterval(timerId);
+  tick();
+  timerId = setInterval(tick, 1000);
+}
+
+function tick(){
+  const restante = CONFIG.TIME_LIMIT - Math.floor((Date.now() - state.inicio) / 1000);
+  if (restante <= 0) {
+    clearInterval(timerId);
+    $('tiempo').textContent = '00:00';
+    enviar(true);
+    return;
+  }
+  const m = Math.floor(restante / 60), s = restante % 60;
+  $('tiempo').textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  $('timerBox').classList.toggle('low', restante <= 60);
+}
+
+function confirmarEnvio(){
+  if (confirm('¿Terminar y enviar el quiz ahora? No podrás volver a presentarlo.')) enviar(false);
+}
+
+async function enviar(automatico){
+  if (enviado) return;
+  enviado = true;
+  clearInterval(timerId);
+  $('btnEnviar').disabled = true;
+
+  const marcadas = QUESTIONS.map((_, i) => {
+    const r = document.querySelector(`input[name="q${i}"]:checked`);
+    return r ? Number(r.value) : null;
+  });
+  const sinResponder = marcadas.filter(x => x === null).length;
+  const correctas = marcadas.filter((v, i) => v === QUESTIONS[i].c).length;
+  const puntaje = Math.round(correctas * (10 / QUESTIONS.length) * 10) / 10;
+  const tiempo = Math.min(CONFIG.TIME_LIMIT, Math.round((Date.now() - state.inicio) / 1000));
+
+  try {
+    const r = await fetch(CONFIG.API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ quiz: CONFIG.QUIZ, apellidos: state.apellidos, nombres: state.nombres, puntaje, correctas, tiempo })
+    });
+    const d = await r.json();
+    if (!d.ok) throw new Error(d.error);
+    localStorage.removeItem(STATE_KEY);
+    mostrarResultado(puntaje, correctas, automatico, sinResponder);
+  } catch (e) {
+    const yaRealizado = String(e.message).includes('Ya realizaste');
+    if (yaRealizado) localStorage.removeItem(STATE_KEY);
+    enviado = false;
+    $('btnEnviar').disabled = false;
+    $('btnEnviar').textContent = yaRealizado ? 'Terminar y enviar' : 'Reintentar envío';
+    alerta('alertaEval', yaRealizado
+      ? 'Ya realizaste este quiz. Solo se permite un intento.'
+      : `No se pudo guardar la nota (${e.message}). Tus respuestas siguen aquí; pulsa "Reintentar envío".`, 'err');
+    if (yaRealizado) $('prueba').classList.add('hidden');
+  }
+}
+
+function mostrarResultado(puntaje, correctas, automatico, sinResponder){
+  $('prueba').classList.add('hidden');
+  $('resultado').classList.remove('hidden');
+  $('notaFinal').textContent = `${puntaje.toFixed(1)} / 10`;
+  let txt = `Respuestas correctas: ${correctas} de ${QUESTIONS.length}.`;
+  if (automatico) txt += ' Se acabó el tiempo y el quiz se envió automáticamente.';
+  if (sinResponder) txt += ` Preguntas sin responder: ${sinResponder}.`;
+  $('detalleNota').textContent = txt;
+}
+
+/* ==================== PANEL DOCENTE ==================== */
+let filas = [];
+
+async function cargarNotas(){
+  const clave = $('claveDocente').value;
+  if (!configurado()) return alerta('alertaDoc', 'Falta configurar la conexión en la página.', 'err');
+  if (!clave) return alerta('alertaDoc', 'Escribe la clave docente.', 'warn');
+  $('btnVerNotas').disabled = true;
+  try {
+    const r = await fetch(`${CONFIG.API_URL}?action=list&quiz=${enc(CONFIG.QUIZ)}&key=${enc(clave)}`);
+    const d = await r.json();
+    if (!d.ok) return alerta('alertaDoc', d.error, 'err');
+    filas = d.rows.sort((a, b) =>
+      String(a.apellidos).localeCompare(String(b.apellidos), 'es', {sensitivity:'base'}) ||
+      String(a.nombres).localeCompare(String(b.nombres), 'es', {sensitivity:'base'}));
+    $('alertaDoc').innerHTML = '';
+    $('panelNotas').classList.remove('hidden');
+    $('btnActualizar').disabled = false;
+    pintarNotas();
+  } catch (e) {
+    alerta('alertaDoc', 'No se pudieron cargar las notas. Revisa la conexión o la clave.', 'err');
+  } finally {
+    $('btnVerNotas').disabled = false;
+  }
+}
+
+function pintarNotas(){
+  const q = $('buscar').value.trim().toLowerCase();
+  const visibles = filas.filter(f => `${f.apellidos} ${f.nombres}`.toLowerCase().includes(q));
+  $('cuerpoNotas').innerHTML = visibles.map((f, i) => `
+    <tr>
+      <td>${i+1}</td>
+      <td>${esc(f.apellidos)}</td>
+      <td>${esc(f.nombres)}</td>
+      <td><b>${Number(f.puntaje).toFixed(1)}</b></td>
+      <td>${esc(f.correctas)}</td>
+      <td>${esc(f.tiempo)} s</td>
+      <td>${esc(f.fecha)}</td>
+    </tr>`).join('') || '<tr><td colspan="7" class="center small">Aún no hay quizzes enviados.</td></tr>';
+
+  const notas = filas.map(f => Number(f.puntaje));
+  const prom = notas.length ? notas.reduce((a, b) => a + b, 0) / notas.length : 0;
+  $('stTotal').textContent = filas.length;
+  $('stPromedio').textContent = prom.toFixed(1);
+  $('stMax').textContent = notas.length ? Math.max(...notas).toFixed(1) : '0';
+  $('stMin').textContent = notas.length ? Math.min(...notas).toFixed(1) : '0';
+}
+
+function descargarCSV(){
+  const cab = ['Apellidos','Nombres','Puntaje (/10)','Correctas','Tiempo (s)','Fecha'];
+  const lineas = [cab.join(';'), ...filas.map(f =>
+    [f.apellidos, f.nombres, Number(f.puntaje).toFixed(1).replace('.',','), f.correctas, f.tiempo, f.fecha]
+      .map(v => `"${String(v ?? '').replace(/"/g,'""')}"`).join(';'))];
+  const blob = new Blob(['﻿' + lineas.join('\n')], {type:'text/csv;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'notas_unidad2.csv';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+/* ==================== EVENTOS E INICIO ==================== */
+$('btnComenzar').addEventListener('click', comenzar);
+$('btnEnviar').addEventListener('click', confirmarEnvio);
+$('btnVerNotas').addEventListener('click', cargarNotas);
+$('btnActualizar').addEventListener('click', cargarNotas);
+$('buscar').addEventListener('input', pintarNotas);
+$('btnCSV').addEventListener('click', descargarCSV);
+$('claveDocente').addEventListener('keydown', e => { if (e.key === 'Enter') cargarNotas(); });
+window.addEventListener('hashchange', mostrarVista);
+
+renderPreguntas();
+generarQR();
+
+const guardado = JSON.parse(localStorage.getItem(STATE_KEY) || 'null');
+if (guardado) {
+  state = guardado;
+  location.hash = 'evaluacion';
+  abrirPrueba();
+}
+mostrarVista();
+</script>
+</body>
+</html>
